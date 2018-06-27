@@ -14,21 +14,15 @@ let config = {
 };
 firebase.initializeApp(config);
 
-
-
 class Login extends Component {
     google = () => {
         console.log("I am in google method");
         var provider = new firebase.auth.GoogleAuthProvider();
         var promise = firebase.auth().signInWithPopup(provider);
         promise.then(user => {
-
-            const {name,picture}=user.additionalUserInfo.profile;
-            this.props.user(name,picture)
+            const { name, picture } = user.additionalUserInfo.profile;
+            this.props.user(name, picture);
             this.props.route(true);
-
-
-
         });
         promise.catch(e => {
             console.log(e.msg);
@@ -38,12 +32,18 @@ class Login extends Component {
     render() {
         return (
             <article className="br3 ba dark-gray b--black-10 mv6 w-100 w-50-m w-25-l mw9 center mt0 tc pa4">
-            <div className='signin'>
-                <h2>You Need to Sign in To Add or See Posts</h2>
-                {/* {this.props.signin=false} */}
-                <Link to="/home"><img className='pointer br3 w-100' src={GoogleLogin} alt="GoogleLogin" onClick={this.google} /></Link>
-            </div>
-        </article>
+                <div className="signin">
+                    <h2>You Need to Sign in To Add or See Posts</h2>
+                    <Link to="/home">
+                        <img
+                            className="pointer br3 w-100"
+                            src={GoogleLogin}
+                            alt="GoogleLogin"
+                            onClick={this.google}
+                        />
+                    </Link>
+                </div>
+            </article>
         );
     }
 }

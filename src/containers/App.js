@@ -12,13 +12,13 @@ class App extends Component {
         signin: false,
         name: "",
         img: "",
-        posts:[]
+        posts: []
     };
     componentDidUpdate() {
         fetch("https://posts-backend.herokuapp.com/")
-        .then(res => res.json())
-        .then(res => this.setState({posts:res}))
-        .catch(err=>console.log(err));
+            .then(res => res.json())
+            .then(res => this.setState({ posts: res }))
+            .catch(err => console.log(err));
     }
     onRouteChange = event => {
         this.setState({ signin: event });
@@ -28,7 +28,7 @@ class App extends Component {
     };
 
     render() {
-        const {img,name,signin,posts}=this.state;
+        const { img, name, signin, posts } = this.state;
         return (
             <div className="App">
                 {signin ? (
@@ -38,25 +38,30 @@ class App extends Component {
                             exact
                             render={() => (
                                 <Aux>
-                                <Nav
-                                    url={img}
-                                    name={name}
-                                    route={this.onRouteChange}
-                                />
-                                <Header />
-                            </Aux>
+                                    <Nav
+                                        url={img}
+                                        name={name}
+                                        route={this.onRouteChange}
+                                    />
+                                    <Header />
+                                </Aux>
                             )}
                         />
                         <Route
                             path="/home"
                             exact
-                            render={() => (
-                                 posts.map(post=><Posts posts={post} key={post._id}/>)
-
-                            )}
+                            render={() =>
+                                posts.map(post => (
+                                    <Posts posts={post} key={post._id} />
+                                ))
+                            }
                         />
 
-                        <Route path="/new" exact render={()=>(<NewPost name={name}/>)} />
+                        <Route
+                            path="/new"
+                            exact
+                            render={() => <NewPost name={name} />}
+                        />
                         <Route path="/read/:id" component={ViewPost} />
                     </Aux>
                 ) : (
@@ -81,7 +86,6 @@ class App extends Component {
                                 />
                             )}
                         />
-
                     </Aux>
                 )}
             </div>
