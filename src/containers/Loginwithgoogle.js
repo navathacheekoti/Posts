@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 const firebase = require("firebase");
 
 let config = {
-    apiKey: "AIzaSyAddQ8UgXyOjJlyqhWheCQ23mJStwIKRyY",
-    authDomain: "authenticate-f71bd.firebaseapp.com",
-    databaseURL: "https://authenticate-f71bd.firebaseio.com",
-    projectId: "authenticate-f71bd",
-    storageBucket: "authenticate-f71bd.appspot.com",
-    messagingSenderId: "407128484728"
+    apiKey: "API KEY",
+    authDomain: "",
+    databaseURL: "DB URL",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "ID"
 };
 firebase.initializeApp(config);
 
